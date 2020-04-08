@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+        #body-content{
+            background-color: #a8d0e6;
+        }
+        #navbar {
+            background-color: #24305e;
+        }
+        #body-container{
+            background-color: white;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width:80%;
+        }
+        #row-centered{
+            text-align: center;
+        }
+        #top-margin{
+            margin-top: 15px;
+        }
+        #item-list{
+            list-style-type:none;
+        }
+	</style>
+</head>
+
+<body id="body-content">
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="d-flex flex-grow-1">
+            <a class="navbar-brand" href="#">
+                UMass Student Food Pantry
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Volunteers
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#login">Login</a>
+                      <a class="dropdown-item" href="#register">Register</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#inventory">Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+
+      <div class="container" id="body-container">
+        <div class="row">
+            <div id="top-margin" class="col text-center">
+                <h3>Pantry Inventory</h3>
+            </div>
+         </div>
+
+         <form>
+            <div class="form-row">
+            <div class="form-group col">
+                <label for="inputItem">Item</label>
+                <input type="text" class="form-control" id="inputType" placeholder="Search">
+            </div>
+            <div class="form-group col">
+                <label for="inputType">Type</label>
+                    <select id="inputType" class="form-control">
+                        <option selected>All</option>
+                        <option>Pasta & Grains</option>
+                        <option>Fruits & Vegetables</option>
+                        <option>Soup</option>
+                        <option>Snacks & Drinks</option>
+                        <option>Cooking & Baking</option>
+                        <option>Miscellaneous</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <div class="row" id="top-margin">
+            <div class="col text-center">
+                <h3>Pasta & Grains</h3>
+                Spaghetti (46) <br/>
+                White Rice (15) <br/>
+            </div>
+            <div class="col text-center">
+                <h3>Fruits & Vegetables</h3>
+                Carrots (27) <br/>
+                Green Beans (25) <br/>
+                Mixed Vegetables (48) <br/>
+            </div>
+            <div class="col text-center">
+                <h3>Soup</h3>
+                Chicken Noodle (70) <br/>
+            </div>
+        </div>
+        <div class="row" id="top-margin">
+            <div class="col text-center">
+                <h3>Snacks & Drinks</h3>
+                Granola Bars (57) <br/>
+                Apple Juice (16) <br/>
+                Cookies (27) <br/>
+            </div>
+            <div class="col text-center">
+                <h3>Cooking & Baking</h3>
+                Olive Oil (16) <br/>
+                Flour (37) <br/>
+            </div>
+            <div class="col text-center">
+                <h3>Miscellaneous</h3>
+                Tuna (7) <br/>
+            </div>
+        </div>
+      </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="regex.js"></script>
+
+</html>

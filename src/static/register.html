@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+        #body-content{
+            background-color: #a8d0e6;
+        }
+        #navbar {
+            background-color: #24305e;
+        }
+        #body-container{
+            background-color: white;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width:80%;
+        }
+        #row-centered{
+            text-align: center;
+        }
+        #top-margin{
+            margin-top: 15px;
+        }
+        #register-container{
+            width:80%;
+            margin:auto;
+            text-align:center;
+        }
+	</style>
+</head>
+
+<body id="body-content">
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="d-flex flex-grow-1">
+            <a class="navbar-brand" href="#">
+                UMass Student Food Pantry
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Volunteers
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#login">Login</a>
+                      <a class="dropdown-item" href="#register">Register</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#inventory">Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+
+      <div class="container" id="body-container">
+        <div class="row">
+            <div id="top-margin" class="col text-center">
+                <h3>Volunteer Registration</h3>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col text-center">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quis enim lobortis scelerisque. Adipiscing elit pellentesque habitant morbi tristique. Tortor dignissim convallis aenean et tortor. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Nisi lacus sed viverra tellus in. </p>
+            </div>
+        </div>
+         <div class="conatiner" id="register-container">
+             <form>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputFirst">First Name</label>
+                        <input type="text" class="form-control" id="inputFirst" placeholder="John">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputLast">Last Name</label>
+                        <input type="text" class="form-control" id="inputLast" placeholder="Smith">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputGrad">Graduation</label>
+                        <select id="inputGrad" class="form-control">
+                            <option selected>Spring 2020</option>
+                            <option>Fall 2020</option>
+                            <option>Spring 2021</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputEmail">E-Mail</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="name@umass.edu">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputName"> Create Password</label>
+                        <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                </div>
+                <button id="top-margin" stype="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+      
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="regex.js"></script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+        #body-content{
+            background-color: #a8d0e6;
+        }
+        #navbar {
+            background-color: #24305e;
+        }
+        #body-container{
+            background-color: white;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width:80%;
+            text-align: center;
+        }
+        #top-margin{
+            margin-top: 15px;
+        }
+	</style>
+</head>
+
+<body id="body-content">
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="d-flex flex-grow-1">
+            <a class="navbar-brand" href="#">
+                UMass Student Food Pantry
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Volunteers
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#login">Login</a>
+                      <a class="dropdown-item" href="#register">Register</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#inventory">Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+
+    <div class="container" id="body-container">
+        <div class="row">
+            <div id="top-margin" class="col text-center">
+                <h3>Volunteer Training Quiz</h3>
+            </div>
+        </div>
+        <label for="questionOne">Is this the volunteer training quiz?</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="questionOne" id="answerOne" value="yes">
+            <label class="form-check-label" for="answerOne">
+                Yes
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="questionOne" id="answerTwo" value="no">
+            <label class="form-check-label" for="answerTwo">
+                No
+            </label>
+        </div>
+        <button id="top-margin" stype="submit" class="btn btn-primary">Submit</button>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="regex.js"></script>
+
+</html>
