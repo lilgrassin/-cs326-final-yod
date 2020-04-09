@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
+
+    <title>Inventory</title>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">What's in stock</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Dasboard</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Inventory</a>
+                            <a class="dropdown-item" href="#">Schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Inventory</h1>
+    </header>
+    <article class="container">
+        <div class="card mb-5 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Process an item</h4>
+            </div>
+            <div class="card-body">
+                <form class="form-inline">
+                    <label class="sr-only" for="inputItem">Item</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="inputItem" placeholder="Item">
+
+                    <label class="sr-only" for="inputCategory">Category</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="inputCategory"
+                        placeholder="Category">
+
+
+                    <label class="sr-only" for="inputNumber">Number of Items</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inputNumber" placeholder="#">
+
+                    <button type="submit" class="btn btn-primary mb-2">Add item</button>
+
+                </form>
+            </div>
+        </div>
+        <div class="card mb-5 shadow-sm">
+            <div class="card-header d-flex justify-content-between">
+                <h4 class="my-0 font-weight-normal">Transaction Items</h4>
+                <div class="d-flex flex-fill justify-content-end">
+                    <button type="button btn" class="btn btn-outline-primary btn-sm mr-2"><i
+                            class="fas fa-pen"></i></button>
+                    <button type="button btn" class="btn btn-outline-danger btn-sm"><i
+                            class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-hover table-vcenter text-nowrap">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Spaghetti</button></td>
+                            <td>Pasta & Grains</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Apples</button></td>
+                            <td>Fruits & Vegetables</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>Bread</button></td>
+                            <td>Pasta & Grains</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Cream of Mushroom</button></td>
+                            <td>Soup</td>
+                            <td>4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="pagination">
+                    <div class="col text-left">
+                        <!-- <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous week</button> -->
+                    </div>
+
+                    <span class="btn btn-sm">
+                        Page 1 of 1
+                    </span>
+                    <div class="col text-right">
+                        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Next week &raquo;</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-5 shadow-sm">
+            <div class="container d-flex mx-auto my-2 justify-content-around">
+                <button type="button btn" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Check in items</button>
+                <button type="button btn" class="btn btn-primary "><i class="fas fa-arrow-up"></i> Check out items</button>
+            </div>
+        </div>
+    </article>
+
+    <!-- Modals -->
+    <div class="modal fade" id="permissionsModal" tabindex="-1" role="dialog" aria-labelledby="permissionsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="permissionsModalLabel">Modify user permissions</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to modify this user's permissions?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Modify user</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete user</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to permanently delete this user?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">Delete user</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

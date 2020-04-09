@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
+
+    <title>Inbox</title>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">What's in stock</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Dasboard</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Inventory</a>
+                            <a class="dropdown-item" href="#">Schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Inbox</h1>
+    </header>
+    <article class="container">
+        <div class="card mb-5  shadow-sm">
+            <div class="card-header d-flex justify-content-between">
+                <h4 class="my-0 font-weight-normal">Recieved</h4>
+                <div class="d-flex flex-fill justify-content-end">
+                    <div class="input-group col-md-4">
+                        <input class="form-control form-control-sm py-2" type="search" placeholder="search" id="recv-search">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-sm" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <button type="button btn" class="btn btn-outline-primary btn-sm mr-2"><i
+                            class="fas fa-pen"></i></button>
+                    <button type="button btn" class="btn btn-outline-primary btn-sm mr-2"><i
+                            class="fas fa-check"></i></button>
+                    <button type="button btn" class="btn btn-outline-danger btn-sm"><i
+                            class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-hover table-vcenter text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="font-weight-bolder">
+                            <td>Admin</td>
+                            <td>RE: inventory question</td>
+                            <td>3/5/20</td>
+                        </tr>
+                        <tr class="font-weight-bolder">
+                            <td>Pauly</td>
+                            <td>RE: Shift change</td>
+                            <td>2/29/20</td>
+                        </tr>
+                        <tr>
+                            <td>Pauly</td>
+                            <td>Shift change</td>
+                            <td>2/28/20</td>
+                        </tr>
+                        <tr>
+                            <td>Admin</td>
+                            <td>Scheduling changes</td>
+                            <td>1/17/20</td>
+                        </tr>
+                        <tr>
+                            <td>Admin</td>
+                            <td>Welcome</td>
+                            <td>11/4/19</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="pagination">
+                    <div class="col text-left">
+                        <!-- <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous</button> -->
+                    </div>
+
+                    <span class="btn btn-sm">
+                        Page 1 of 2
+                    </span>
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-outline-secondary btn-sm">Next &raquo;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-5  shadow-sm">
+            <div class="card-header d-flex justify-content-between">
+                <h4 class="my-0 font-weight-normal">Sent</h4>
+                <div class="input-group col-md-4">
+                    <input class="form-control form-control-sm py-2" type="search" placeholder="search" id="recv-search">
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary btn-sm" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-hover table-vcenter text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>To</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Admin</td>
+                            <td>inventory question</td>
+                            <td>3/4/20</td>
+                        </tr>
+                        <tr>
+                            <td>Pauly</td>
+                            <td>RE: Shift change</td>
+                            <td>2/28/20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="pagination">
+                    <div class="col text-left">
+                        <!-- <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous</button> -->
+                    </div>
+
+                    <span class="btn btn-sm">
+                        Page 1 of 1
+                    </span>
+                    <div class="col text-right">
+                        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Next &raquo;</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-5  shadow-sm">
+            <div class="card-header d-flex justify-content-between">
+                <h4 class="my-0 font-weight-normal">Drafts</h4>
+                <div class="d-flex flex-fill justify-content-end">
+                    <div class="input-group col-md-4">
+                        <input class="form-control form-control-sm py-2" type="search" placeholder="search" id="recv-search">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-sm" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <button type="button btn" class="btn btn-outline-primary btn-sm mr-2"><i
+                            class="fas fa-pen"></i></button>
+                    <button type="button btn" class="btn btn-outline-danger btn-sm"><i
+                            class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-hover table-vcenter text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>To</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="text-center text-muted">No Drafts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="pagination">
+                    <div class="col text-left">
+                        <!-- <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous</button> -->
+                    </div>
+
+                    <span class="btn btn-sm">
+                        Page 1 of 1
+                    </span>
+                    <div class="col text-right">
+                        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Next &raquo;</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
