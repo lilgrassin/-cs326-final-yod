@@ -3,19 +3,39 @@
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Bootstrap/Tabler assets -->
 
+    <script src="./tabler/js/require.min.js"></script>
+    <script>
+        requirejs.config({
+            baseUrl: '.'
+        });
+    </script>
+    <!-- Dashboard Core -->
+    <link href="./tabler/css/dashboard.css" rel="stylesheet" />
+    <script src="./tabler/js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <link href="./tabler/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="./tabler/plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <link href="./tabler/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="./tabler/plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="./tabler/plugins/input-mask/plugin.js"></script>
+
+    <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    
     <title>Schedule</title>
 </head>
 
-<body class="bg-light">
+<body class="bg-blue-lightest">
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
@@ -83,14 +103,16 @@
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button></td>
+                            <td><button type="button" class="btn btn-success btn-sm"><i
+                                        class="fas fa-check"></i></button></td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
                         </tr>
                         <tr>
                             <td scope="row">5-6 PM</td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button></td>
+                            <td><button type="button" class="btn btn-success btn-sm"><i
+                                        class="fas fa-check"></i></button></td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
@@ -100,12 +122,14 @@
                         <tr>
                             <td scope="row">6-7 PM</td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button></td>
+                            <td><button type="button" class="btn btn-success btn-sm"><i
+                                        class="fas fa-check"></i></button></td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
                             <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button></td>
+                            <td><button type="button" class="btn btn-success btn-sm"><i
+                                        class="fas fa-check"></i></button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -113,7 +137,8 @@
             <div class="card-footer">
                 <div class="pagination">
                     <div class="col text-left">
-                        <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous week</button>
+                        <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous
+                            week</button>
                     </div>
 
                     <span class="btn btn-sm">
@@ -142,22 +167,26 @@
                         <tr>
                             <td>5/7/20</button></td>
                             <td>5-6 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-times"></i></button></td>
+                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
+                                        class="fas fa-times"></i></button></td>
                         </tr>
                         <tr>
                             <td>5/7/20</button></td>
                             <td>6-7 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-times"></i></button></td>
+                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
+                                        class="fas fa-times"></i></button></td>
                         </tr>
                         <tr>
                             <td>5/10/20</button></td>
                             <td>4-5 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-times"></i></button></td>
+                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
+                                        class="fas fa-times"></i></button></td>
                         </tr>
                         <tr>
                             <td>5/12/20</button></td>
                             <td>6-7 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-times"></i></button></td>
+                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
+                                        class="fas fa-times"></i></button></td>
                         </tr>
                     </tbody>
                 </table>
