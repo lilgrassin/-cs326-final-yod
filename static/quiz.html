@@ -1,82 +1,100 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<style>
-        #body-content{
-            background-color: #a8d0e6;
-        }
-        #navbar {
-            background-color: #24305e;
-        }
-        #body-container{
-            background-color: white;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            width:80%;
-            text-align: center;
-        }
-        #top-margin{
-            margin-top: 15px;
-        }
-	</style>
-</head>
-
-<body id="body-content">
-    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
-        <div class="d-flex flex-grow-1">
-            <a class="navbar-brand" href="#">
-                UMass Student Food Pantry
-            </a>
-            <div class="w-100 text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+        <!-- Bootstrap/Tabler assets -->
+    
+        <script src="./tabler/js/require.min.js"></script>
+        <script>
+            requirejs.config({
+                baseUrl: '.'
+            });
+        </script>
+        <!-- Dashboard Core -->
+        <link href="./tabler/css/dashboard.css" rel="stylesheet" />
+        <script src="./tabler/js/dashboard.js"></script>
+        <!-- c3.js Charts Plugin -->
+        <link href="./tabler/plugins/charts-c3/plugin.css" rel="stylesheet" />
+        <script src="./tabler/plugins/charts-c3/plugin.js"></script>
+        <!-- Google Maps Plugin -->
+        <link href="./tabler/plugins/maps-google/plugin.css" rel="stylesheet" />
+        <script src="./tabler/plugins/maps-google/plugin.js"></script>
+        <!-- Input Mask Plugin -->
+        <script src="./tabler/plugins/input-mask/plugin.js"></script>
+    
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
+    
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+        
+      <title>Quiz</title>
+    </head>
+    
+    <body class="bg-blue-lightest">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+          <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <div class="navbar-nav ml-auto">
+              <a class="nav-item nav-link" href="#">Home</a>
+              <a class="nav-item nav-link" href="#">What's in stock</a>
+              <a class="nav-item nav-link" href="#">Contact</a>
+              <div class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                  aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Dasboard</a>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="#">Inbox</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Inventory</a>
+                  <a class="dropdown-item" href="#">Schedule</a>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto flex-nowrap">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Volunteers
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#login">Login</a>
-                      <a class="dropdown-item" href="#register">Register</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#inventory">Inventory</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-            </ul>
+          </div>
         </div>
       </nav>
 
-    <div class="container" id="body-container">
-        <div class="row">
-            <div id="top-margin" class="col text-center">
-                <h3>Volunteer Training Quiz</h3>
+      <header class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Volunteer Quiz</h1>
+      </header>
+
+      <article class="container">
+        <form>
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="questionOne">Is this the volunteer training quiz?</label>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="questionOne" id="answerOne" value="yes">
+                  <label class="form-check-label" for="answerOne">
+                      Yes
+                  </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="questionOne" id="answerTwo" value="no">
+                  <label class="form-check-label" for="answerTwo">
+                      No
+                  </label>
+              </div>
             </div>
-        </div>
-        <label for="questionOne">Is this the volunteer training quiz?</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="questionOne" id="answerOne" value="yes">
-            <label class="form-check-label" for="answerOne">
-                Yes
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="questionOne" id="answerTwo" value="no">
-            <label class="form-check-label" for="answerTwo">
-                No
-            </label>
-        </div>
-        <button id="top-margin" stype="submit" class="btn btn-primary">Submit</button>
-    </div>
+          </div>
+          <div class="form-row">
+            <div class="mx-auto">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </article>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

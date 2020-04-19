@@ -1,77 +1,94 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<style>
-        #body-content{
-            background-color: #a8d0e6;
-        }
-        #navbar {
-            background-color: #24305e;
-        }
-        #body-container{
-            background-color: white;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            width:80%;
-            text-align: center;
-        }
-        #top-margin{
-            margin-top: 15px;
-        }
-	</style>
-</head>
-
-<body id="body-content">
-    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
-        <div class="d-flex flex-grow-1">
-            <a class="navbar-brand" href="#">
-                UMass Student Food Pantry
-            </a>
-            <div class="w-100 text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+        <!-- Bootstrap/Tabler assets -->
+    
+        <script src="./tabler/js/require.min.js"></script>
+        <script>
+            requirejs.config({
+                baseUrl: '.'
+            });
+        </script>
+        <!-- Dashboard Core -->
+        <link href="./tabler/css/dashboard.css" rel="stylesheet" />
+        <script src="./tabler/js/dashboard.js"></script>
+        <!-- c3.js Charts Plugin -->
+        <link href="./tabler/plugins/charts-c3/plugin.css" rel="stylesheet" />
+        <script src="./tabler/plugins/charts-c3/plugin.js"></script>
+        <!-- Google Maps Plugin -->
+        <link href="./tabler/plugins/maps-google/plugin.css" rel="stylesheet" />
+        <script src="./tabler/plugins/maps-google/plugin.js"></script>
+        <!-- Input Mask Plugin -->
+        <script src="./tabler/plugins/input-mask/plugin.js"></script>
+    
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
+    
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+        
+      <title>Training</title>
+    </head>
+    
+    <body class="bg-blue-lightest">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+          <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <div class="navbar-nav ml-auto">
+              <a class="nav-item nav-link" href="#">Home</a>
+              <a class="nav-item nav-link" href="#">What's in stock</a>
+              <a class="nav-item nav-link" href="#">Contact</a>
+              <div class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                  aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Dasboard</a>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="#">Inbox</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Inventory</a>
+                  <a class="dropdown-item" href="#">Schedule</a>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto flex-nowrap">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Volunteers
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#login">Login</a>
-                      <a class="dropdown-item" href="#register">Register</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#inventory">Inventory</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-            </ul>
+          </div>
         </div>
       </nav>
+      
+      <header class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Volunteer Training</h1>
+    </header>
 
-    <div class="container" id="body-container">
-        <div class="row">
-            <div id="top-margin" class="col text-center">
-                <h3>Volunteer Training</h3>
+    <article class="container">
+        <div class="card mb-5  shadow-sm text-center">
+            <div class="card-header">
+                <h4 class="my-0">Food Insecurity</h4>
             </div>
-         </div>
-         <div class="row">
-            <div class="col text-center">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Feugiat vivamus at augue eget. Eget velit aliquet sagittis id. Suspendisse ultrices gravida dictum fusce ut placerat orci. Nisl condimentum id venenatis a condimentum. Dignissim convallis aenean et tortor at risus viverra adipiscing at. Donec massa sapien faucibus et molestie ac feugiat sed. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Dolor sit amet consectetur adipiscing elit duis. Nisi est sit amet facilisis magna etiam tempor. Volutpat est velit egestas dui id ornare arcu odio ut. Neque volutpat ac tincidunt vitae semper quis lectus nulla. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Et tortor consequat id porta nibh venenatis cras sed felis. Pharetra sit amet aliquam id diam. Nunc mattis enim ut tellus elementum sagittis vitae et. Mi tempus imperdiet nulla malesuada pellentesque elit eget. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit.</p>
-                <p>Augue interdum velit euismod in pellentesque massa placerat. Vel pharetra vel turpis nunc eget. Netus et malesuada fames ac. A arcu cursus vitae congue. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Mattis rhoncus urna neque viverra justo nec ultrices dui. Odio pellentesque diam volutpat commodo. Et pharetra pharetra massa massa ultricies mi quis hendrerit. Enim tortor at auctor urna. Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Risus commodo viverra maecenas accumsan lacus vel facilisis. Dui vivamus arcu felis bibendum ut tristique. Ac felis donec et odio pellentesque diam. Pulvinar proin gravida hendrerit lectus. Interdum consectetur libero id faucibus nisl tincidunt eget nullam non. Leo urna molestie at elementum eu. Vitae purus faucibus ornare suspendisse sed nisi lacus. Sed arcu non odio euismod lacinia at quis risus sed. Tristique sollicitudin nibh sit amet commodo nulla facilisi.</p>
-                <p>Lobortis elementum nibh tellus molestie nunc non blandit massa. Ac orci phasellus egestas tellus rutrum tellus. Placerat duis ultricies lacus sed turpis tincidunt id. Neque laoreet suspendisse interdum consectetur. Donec massa sapien faucibus et molestie. Pharetra diam sit amet nisl suscipit adipiscing bibendum. Consectetur adipiscing elit duis tristique. Duis convallis convallis tellus id interdum velit laoreet id donec. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Semper risus in hendrerit gravida rutrum. Diam quam nulla porttitor massa id neque aliquam.</p>
+            <div class="card-body">
+                Information about food insecurity goes here.
             </div>
         </div>
-        <button id="top-margin" stype="submit" class="btn btn-primary">Proceed to Quiz</button>
-    </div>
-      
+    </article>
+
+    <article class="container">
+      <form>
+        <div class="form-row">
+          <div class="mx-auto">
+            <button type="submit" class="btn btn-primary">Continue to Quiz</button>
+          </div>
+        </div>
+      </form>
+    </article>
 
 </body>
 
