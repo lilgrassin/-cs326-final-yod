@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Bootstrap/Tabler assets -->
+
+    <script src="./tabler/js/require.min.js"></script>
+    <script>
+        requirejs.config({
+            baseUrl: '.'
+        });
+    </script>
+    <!-- Dashboard Core -->
+    <link href="./tabler/css/dashboard.css" rel="stylesheet" />
+    <script src="./tabler/js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <link href="./tabler/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="./tabler/plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <link href="./tabler/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="./tabler/plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="./tabler/plugins/input-mask/plugin.js"></script>
+
+    <!-- Customizations -->
+    <link href="./style.css" rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+
+    <title>Pantry Statistics</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">What's in stock</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Dasboard</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Inventory</a>
+                            <a class="dropdown-item" href="#">Schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="container px-3 py-3 pt-md-7 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Statistics</h1>
+    </header>
+    <article class="container">
+        <div class="row row-cards row-deck">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Visitor traffic</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-traffic" style="height: 16rem"></div>
+                    </div>
+                </div>
+                <script>
+                    require(['c3', 'jquery'], function (c3, $) {
+                        $(document).ready(function () {
+                            var chart = c3.generate({
+                                bindto: '#chart-traffic', // id of chart wrapper
+                                data: {
+                                    x: 'x',
+                                    xFormat: "%Y%m%d",
+                                    columns: [
+                                        // each columns data
+                                        ['x', '20200416', '20200417', '20200418', '20200419', '20200420', '20200421'],
+                                        ['in', 0, 3, 2, 0, 4, 6],
+                                        ['out', 6, 8, 7, 14, 11, 5]
+                                    ],
+                                    type: 'line', // default type of chart
+                                    colors: {
+                                        'in': tabler.colors["green"],
+                                        'out': tabler.colors["orange"]
+                                    },
+                                    names: {
+                                        // name of each serie
+                                        'in': 'Donations',
+                                        'out': 'Visitors'
+                                    }
+                                },
+                                axis: {
+                                    x: {
+                                        type: 'timeseries',
+                                        // name of each category
+                                        tick: {
+                                            format: '%Y-%m-%d'
+                                        }
+                                    },
+                                    y: {
+                                        min: 0
+                                    }
+                                },
+                                legend: {
+                                    show: false, //hide legend
+                                },
+                                padding: {
+                                    bottom: 0,
+                                    top: 0
+                                },
+                            });
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Top distributed items</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table card-table table-hover table-vcenter text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Donated</th>
+                                    <th scope="col">Distributed</th>
+                                    <th scope="col">Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Spaghetti</button></td>
+                                    <td>Pasta & Grains</td>
+                                    <td>234</td>
+                                    <td>178</td>
+                                    <td>56</td>
+                                </tr>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Apples</button></td>
+                                    <td>Fruits & Vegetables</td>
+                                    <td>193</td>
+                                    <td>146</td>
+                                    <td>47</td>
+                                </tr>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Bread</button></td>
+                                    <td>Pasta & Grains</td>
+                                    <td>288</td>
+                                    <td>115</td>
+                                    <td>173</td>
+                                </tr>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Cream of Mushroom</button></td>
+                                    <td>Soup</td>
+                                    <td>249</td>
+                                    <td>90</td>
+                                    <td>59</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pagination">
+                            <div class="col text-left">
+                                <button type="button btn" class="btn btn-sm btn-pill btn-outline-secondary"
+                                    disabled>&laquo;
+                                    Previous</button>
+                            </div>
+
+                            <span class="btn btn-sm">
+                                Page 1 of 1
+                            </span>
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                    disabled>Next
+                                    &raquo;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cards row-deck">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Stock items</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-items" style="height: 16rem"></div>
+                    </div>
+                </div>
+                <script>
+                    require(['c3', 'jquery'], function (c3, $) {
+                        $(document).ready(function () {
+                            var chart = c3.generate({
+                                bindto: '#chart-items', // id of chart wrapper
+                                data: {
+                                    x: 'x',
+                                    xFormat: "%Y%m%d",
+                                    columns: [
+                                        // each columns data
+                                        ['x', '20200416', '20200417', '20200418', '20200419', '20200420', '20200421'],
+                                        ['in', 0, 355, 33, 0, 85, 217],
+                                        ['out', 119, 243, 226, 466, 298, 60],
+                                        ['stock', 1983, 2095, 1902, 1436, 1223, 1380],
+                                    ],
+                                    types: {
+                                        'in': 'line',
+                                        'out': 'line',
+                                        'stock': 'area'
+                                    },
+                                    colors: {
+                                        'in': tabler.colors["green"],
+                                        'out': tabler.colors["orange"],
+                                        'stock': tabler.colors["blue"]
+                                    },
+                                    names: {
+                                        // name of each serie
+                                        'in': 'Donated',
+                                        'out': 'Distributed',
+                                        'stock': 'Stock'
+                                    },
+                                    axes: {
+                                        in: 'y',
+                                        out: 'y',
+                                        stock: 'y2'
+                                    }
+                                },
+                                axis: {
+                                    x: {
+                                        type: 'timeseries',
+                                        // name of each category
+                                        tick: {
+                                            format: '%Y-%m-%d'
+                                        }
+                                    },
+                                    y: {
+                                        min: 0
+                                    },
+                                    y2: {
+                                        show: true
+                                    }
+                                },
+                                legend: {
+                                    show: false, //hide legend
+                                },
+                                padding: {
+                                    bottom: 0,
+                                    top: 0
+                                },
+                            });
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Stock weight</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-weight" style="height: 16rem"></div>
+                    </div>
+                </div>
+                <script>
+                    require(['c3', 'jquery'], function (c3, $) {
+                        $(document).ready(function () {
+                            var chart = c3.generate({
+                                bindto: '#chart-weight', // id of chart wrapper
+                                data: {
+                                    x: 'x',
+                                    xFormat: "%Y%m%d",
+                                    columns: [
+                                        // each columns data
+                                        ['x', '20200416', '20200417', '20200418', '20200419', '20200420', '20200421'],
+                                        ['in', 0, 355, 33, 0, 85, 217],
+                                        ['out', 119, 243, 226, 466, 298, 60],
+                                        ['stock', 1983, 2095, 1902, 1436, 1223, 1380],
+                                    ],
+                                    types: {
+                                        'in': 'line',
+                                        'out': 'line',
+                                        'stock': 'area'
+                                    },
+                                    colors: {
+                                        'in': tabler.colors["green"],
+                                        'out': tabler.colors["orange"],
+                                        'stock': tabler.colors["blue"]
+                                    },
+                                    names: {
+                                        // name of each serie
+                                        'in': 'Donated',
+                                        'out': 'Distributed',
+                                        'stock': 'Stock'
+                                    },
+                                    axes: {
+                                        in: 'y',
+                                        out: 'y',
+                                        stock: 'y2'
+                                    }
+                                },
+                                axis: {
+                                    x: {
+                                        type: 'timeseries',
+                                        // name of each category
+                                        tick: {
+                                            format: '%Y-%m-%d'
+                                        }
+                                    },
+                                    y: {
+                                        min: 0
+                                    },
+                                    y2: {
+                                        show: true
+                                    }
+                                },
+                                legend: {
+                                    show: false, //hide legend
+                                },
+                                padding: {
+                                    bottom: 0,
+                                    top: 0
+                                },
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </article>
+</body>
+
+</html>
