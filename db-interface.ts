@@ -6,7 +6,7 @@ export interface DatabaseInterface {
 
 	put(key: string, value: string): Promise<void>;
 
-    get(key: string) : Promise < string >;
+    get(key: string) : Promise < string | null >;
     
     del(key: string) : Promise < void>;
     
