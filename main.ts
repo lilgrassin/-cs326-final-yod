@@ -1,9 +1,7 @@
-'use strict';
+import { Database } from './db-mongo';
+import { PRServer } from './server';
 
-import { Database } from './mongo-database';
-import { MyServer } from './myserver-routing';
-
-const theDatabase = new Database('pkg250');
-const theServer = new MyServer(theDatabase);
+const theDatabase = new Database('pantryraiders');
+const theServer = new PRServer(theDatabase);
 
 theServer.listen(8080);

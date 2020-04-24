@@ -1,17 +1,18 @@
-let http = require('http');
-let url = require('url');
-let express = require('express');
+import { DatabaseInterface} from './db-interface';
+import express from "express";
+import * as http from "http";
+import * as url from "url";
 
-export class MyServer {
+export class PRServer {
 
-    private theDatabase;
+    private theDatabase : DatabaseInterface;
 
     // Server stuff: use express instead of http.createServer
     private server = express();
     private port = 8080;
     private router = express.Router();
 
-    constructor(db) {
+    constructor(db : DatabaseInterface) {
 	this.theDatabase = db;
 	// from https://enable-cors.org/server_expressjs.html
 	this.router.use((request, response, next) => {
@@ -61,7 +62,7 @@ export class MyServer {
 	// await this.deleteCounter(request.params['userId']+"-"+request.query.name, response);
     // }
 
-    public listen(port) : void  {
+    public listen(port : number) : void  {
 	this.server.listen(port);
     }
 
