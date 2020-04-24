@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var url = "http://localhost:8080";
 function createMessage() {
     var _this = this;
     (function () { return __awaiter(_this, void 0, void 0, function () {
@@ -48,7 +47,7 @@ function createMessage() {
                     email = document.getElementById("inputEmail").value;
                     type = document.getElementById("inputType").value;
                     message = document.getElementById("inputMessage").value;
-                    newURL = url + "/mail/create";
+                    newURL = window.location.pathname + "/mail/create";
                     return [4 /*yield*/, fetch(newURL)];
                 case 1:
                     resp = _a.sent();

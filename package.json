@@ -25,6 +25,7 @@
     "@types/node": "^13.13.2"
   },
   "dependencies": {
+    "@types/faker": "^4.1.11",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mongodb": "^3.5.6"
