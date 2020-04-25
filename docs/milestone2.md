@@ -29,7 +29,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 #### Endpoints
 
 | **Endpoint** | **Description** |
-|-----------|-----------------------------------------------|---------------------------------------|
+|----------|-------------|
 | /register/user/create      | Creates a new user profile |
 | /inbox/:id/user/read      | Allows users to access user profiles for messaging |
 | /admin/:id/user/read      | Allows admins to access user profiles |
@@ -56,7 +56,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 #### Endpoints
 
 | **Endpoint** | **Description** |
-|-----------|-----------------------------------------------|---------------------------------------|
+|----------|-------------|
 | /contact/mail/create      | Creates a message from public user |
 | /inbox/:id/mail/create      | Creates a message from a user |
 | /inbox/:id/mail/read      | Allows users to access messages |
@@ -77,7 +77,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 #### Endpoints
 
 | **Endpoint** | **Description** |
-|-----------|-----------------------------------------------|---------------------------------------|
+|----------|-------------|
 | /transaction/:id/item/create      | Create a new item from transaction |
 | /inventory/item/read      | Access item information for inventory display |
 | /transaction/:id/item/read      | Access item information for transaction |
@@ -100,7 +100,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 #### Endpoints
 
 | **Endpoint** | **Description** |
-|-----------|-----------------------------------------------|---------------------------------------|
+|----------|-------------|
 | /transaction/:id/create | Create a new transaction
 | /statistics/:id/transaction/read | Allows a user to access transaction statistics
 
@@ -117,7 +117,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 #### Endpoints
 
 | **Endpoint** | **Description** |
-|-----------|-----------------------------------------------|---------------------------------------|
+|----------|-------------|
 | /admin/:id/create      | Creates a new week schedule |
 | /admin/:id/schedule      | Allows admins to access a schedule |
 | /admin/:id/schedule/delete      | Allows admins to delete a schedule|
@@ -137,7 +137,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 #### Endpoints
 
 | **Endpoint** | **Description** |
-|-----------|-----------------------------------------------|---------------------------------------|
+|----------|-------------|
 | /schedule/:id/shift/create      | Creates a shift for a user |
 | /schedule/:id/shift/read      | Allows a user to access their shifts |
 | /schedule/:id/shift/update      | Allows a user to update their shifts |
