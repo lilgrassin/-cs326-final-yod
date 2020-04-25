@@ -15,6 +15,8 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 
 ### Users
 
+#### Parameters
+
 | **Parameter** | **Description** | **Example** |
 |-----------|-----------------------------------------------|---------------------------------------|
 | First Name     | User's first name |{"firstName":"John"} |
@@ -24,6 +26,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 | Graduation    | User's graduation semester |{"graduation":"Spring 2020"} |
 | Password    | User's password |{"password":"************"} |
 
+#### Endpoints
 
 | **Endpoint** | **Description**
 |-----------|-----------------------------------------------|---------------------------------------|
@@ -39,6 +42,8 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 
 ### Messages
 
+#### Parameters
+
 | **Parameter** | **Description** | **Example** |
 |-----------|-----------------------------------------------|---------------------------------------|
 | From (Name)     | Sender's name |{"fromName":"John Smith"} |
@@ -48,6 +53,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 | Subject    | Message type or subject |{"subject":"Question"} |
 | Message    | Message content |{"message":"Message content."} |
 
+#### Endpoints
 
 | **Endpoint** | **Description**
 |-----------|-----------------------------------------------|---------------------------------------|
@@ -60,12 +66,15 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 
 ### Inventory
 
+#### Parameters
+
 | **Parameter** | **Description** | **Example** |
 |-----------|-----------------------------------------------|---------------------------------------|
 | Item     | Pantry inventory item |{"item":"Spaghetti"} |
 | Stock    | Number of item in inventory |{"stock":"30"} |
 | Type    | Item type |{"type":"Pasta & Grains"} |
 
+#### Endpoints
 
 | **Endpoint** | **Description**
 |-----------|-----------------------------------------------|---------------------------------------|
@@ -78,6 +87,8 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 
 ### Transactions
 
+#### Parameters
+
 | **Parameter** | **Description** | **Example** |
 |-----------|-----------------------------------------------|---------------------------------------|
 | Date    | Date and time of transaction |{"date":"YYYY-MM-DDTHH:mm:ss:sssZ"} |
@@ -86,6 +97,7 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 | Items    | List of items included in transaction |{"items":"[{item1}, {item2}]"} |
 | Weight    | Total weight of transaction (pounds) |{"weight":"7.6"} |
 
+#### Endpoints
 
 | **Endpoint** | **Description**
 |-----------|-----------------------------------------------|---------------------------------------|
@@ -95,11 +107,14 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 
 ### Schedule
 
+#### Parameters
+
 | **Parameter** | **Description** | **Example** |
 |-----------|-----------------------------------------------|---------------------------------------|
 | Week    | Date and time of transaction |{"week":"YYYY-MM-DDTHH:mm:ss:sssZ"} |
 | Shifts    | Shifts created for associated week's schedule |{"shifts":"[{shift 1}, {shift2}]"} |
 
+#### Endpoints
 
 | **Endpoint** | **Description**
 |-----------|-----------------------------------------------|---------------------------------------|
@@ -112,11 +127,14 @@ The Pantry Raider API provides endpoints for data on users, pantry inventory, me
 
 ### Shift
 
+#### Parameters
+
 | **Parameter** | **Description** | **Example** |
 |-----------|-----------------------------------------------|---------------------------------------|
 | Date    | Date and time of transaction |{"date":"YYYY-MM-DDTHH:mm:ss:sssZ"} |
 | Volunteer  | User profiles of shift volunteer(s) |{"volunteer":"[{user1}, {user2}]"} |
 
+#### Endpoints
 
 | **Endpoint** | **Description**
 |-----------|-----------------------------------------------|---------------------------------------|
