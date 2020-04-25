@@ -27,6 +27,10 @@
     <!-- Input Mask Plugin -->
     <script src="/tabler/plugins/input-mask/plugin.js"></script>
 
+    <!-- Customizations -->
+    <link href="/style.css" rel="stylesheet" />
+    <script src="./clickHandlers.js" defer></script>
+
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
 
@@ -78,92 +82,104 @@
         <h1 class="display-4">Inventory</h1>
     </header>
     <article class="container">
-        <div class="card mb-5 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Process an item</h4>
-            </div>
-            <div class="card-body">
-                <form class="form-inline">
-                    <label class="sr-only" for="inputItem">Item</label>
-                    <input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="inputItem" placeholder="Item">
-
-                    <label class="sr-only" for="inputCategory">Category</label>
-                    <input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="inputCategory"
-                        placeholder="Category">
-
-
-                    <label class="sr-only" for="inputNumber">Number of Items</label>
-                    <input type="text" class="form-control mb-2 mr-sm-2" id="inputNumber" placeholder="#">
-
-                    <button type="submit" class="btn btn-primary mb-2">Add item</button>
-
-                </form>
-            </div>
-        </div>
-        <div class="card mb-5 shadow-sm">
-            <div class="card-header d-flex justify-content-between">
-                <h4 class="my-0 font-weight-normal">Transaction Items</h4>
-                <div class="d-flex flex-fill justify-content-end">
-                    <button type="button btn" class="btn btn-outline-primary btn-sm mr-2"><i
-                            class="fas fa-pen"></i></button>
-                    <button type="button btn" class="btn btn-outline-danger btn-sm"><i
-                            class="fas fa-trash"></i></button>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table card-table table-hover table-vcenter text-nowrap">
-                    <thead>
-                        <tr>
-                            <th scope="col">Item</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Spaghetti</button></td>
-                            <td>Pasta & Grains</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>Apples</button></td>
-                            <td>Fruits & Vegetables</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>Bread</button></td>
-                            <td>Pasta & Grains</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>Cream of Mushroom</button></td>
-                            <td>Soup</td>
-                            <td>4</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer">
-                <div class="pagination">
-                    <div class="col text-left">
-                        <!-- <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous week</button> -->
+        <div class="row row-cards row-deck">
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="chk-in-tab" href="#in" onclick="tabHandler(event);return false;"><i class="fe fe-download"></i> Check
+                                    in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="chk-out-tab" href="#out" onclick="tabHandler(event);return false;"><i class="fe fe-upload"></i> Check out</a>
+                            </li>
+                        </ul>
                     </div>
+                    <div class="card-body">
+                        <form class="form-inline">
+                            <label class="sr-only" for="inputItem">Item</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="inputItem"
+                                placeholder="Item">
 
-                    <span class="btn btn-sm">
-                        Page 1 of 1
-                    </span>
-                    <div class="col text-right">
-                        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Next week &raquo;</button> -->
+                            <label class="sr-only" for="inputCategory">Category</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="inputCategory"
+                                placeholder="Category">
+
+
+                            <label class="sr-only" for="inputNumber">Number of Items</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="inputNumber" placeholder="#">
+
+                            <button type="submit" class="btn btn-cyan btn-indigo mb-2" id="btn-add-item"><i class="fe fe-plus"></i> Add item</button>
+
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card mb-5 shadow-sm">
-            <div class="container d-flex mx-auto my-2 justify-content-around">
-                <button type="button btn" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Check in
-                    items</button>
-                <button type="button btn" class="btn btn-primary "><i class="fas fa-arrow-up"></i> Check out
-                    items</button>
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Transaction Items</h4>
+                        <div class="card-options">
+                            <button type="button btn" class="btn btn-outline-info btn-sm btn-icon mr-2"><i
+                                    class="fe fe-edit-3"></i></button>
+                            <button type="button btn" class="btn btn-outline-danger btn-sm btn-icon mr-2"><i
+                                    class="fe fe-trash-2"></i></button>
+                            <button type="button btn" class="btn btn-success btn-sm" id="submit-items"><i class="fe fe-check-circle"></i> Check in items</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table card-table table-hover table-vcenter text-nowrap select-indigo select-cyan" id="select-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Spaghetti</button></td>
+                                    <td>Pasta & Grains</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Apples</button></td>
+                                    <td>Fruits & Vegetables</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Bread</button></td>
+                                    <td>Pasta & Grains</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr onclick="selectionHandler(event)">
+                                    <td>Cream of Mushroom</button></td>
+                                    <td>Soup</td>
+                                    <td>4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pagination">
+                            <div class="col text-left">
+                                <button type="button btn" class="btn btn-sm btn-pill btn-outline-secondary"
+                                    disabled>&laquo;
+                                    Previous</button>
+                            </div>
+
+                            <span class="btn btn-sm">
+                                Page 1 of 1
+                            </span>
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                    disabled>Next
+                                    &raquo;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </article>
