@@ -71,7 +71,7 @@ export class PRServer {
 	// }
 
 	// FIXME: check this?
-	public listen(port: number): void {
+	public listen(port: string | undefined): void {
 		this.server.listen(port);
 	}
 
