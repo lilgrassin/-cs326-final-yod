@@ -27,6 +27,9 @@
     <!-- Input Mask Plugin -->
     <script src="/tabler/plugins/input-mask/plugin.js"></script>
 
+    <!-- Customizations -->
+    <link href="/style.css" rel="stylesheet" />
+
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
 
@@ -78,140 +81,178 @@
         <h1 class="display-4">Schedule</h1>
     </header>
     <article class="container">
-        <div class="card mb-5  shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Register for shifts</h4>
-            </div>
-            <div class="table-responsive">
-                <table class="table card-table table-hover table-vcenter text-center text-nowrap">
-                    <thead>
-                        <tr>
-                            <th scope="col">Time</th>
-                            <th scope="col">Mon 5/6</th>
-                            <th scope="col">Tue 5/7</th>
-                            <th scope="col">Wed 5/8</th>
-                            <th scope="col">Thu 5/9</th>
-                            <th scope="col">Fri 5/10</th>
-                            <th scope="col">Sat 5/11</th>
-                            <th scope="col">Sun 5/12</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row">3-4 PM</td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">4-5 PM</td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i
-                                        class="fas fa-check"></i></button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">5-6 PM</td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i
-                                        class="fas fa-check"></i></button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">6-7 PM</td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i
-                                        class="fas fa-check"></i></button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-primary btn-sm">Open</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-outline-secondary btn-sm">Full</button></td>
-                            <td><button type="button" class="btn btn-success btn-sm"><i
-                                        class="fas fa-check"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer">
-                <div class="pagination">
-                    <div class="col text-left">
-                        <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous
-                            week</button>
+        <div class="row row-cards row-deck">
+            <div class="col-xl-8">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0">Shift registration</h4>
                     </div>
+                    <div class="table-responsive">
+                        <table class="table card-table table-hover table-vcenter text-center text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Mon 5/6</th>
+                                    <th scope="col">Tue 5/7</th>
+                                    <th scope="col">Wed 5/8</th>
+                                    <th scope="col">Thu 5/9</th>
+                                    <th scope="col">Fri 5/10</th>
+                                    <th scope="col">Sat 5/11</th>
+                                    <th scope="col">Sun 5/12</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">3-4 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">4-5 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-success"><i
+                                                class="fe fe-check"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">5-6 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-success"><i
+                                                class="fe fe-check"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">6-7 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-success"><i
+                                                class="fe fe-check"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-primary"><i
+                                                class="fe fe-plus"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                            disabled><i class="fe fe-x"></i></button></td>
+                                    <td><button type="button" class="btn btn-sm btn-pill btn-icon btn-success"><i
+                                                class="fe fe-check"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pagination">
+                            <div class="col text-left">
+                                <button type="button btn" class="btn btn-sm btn-pill btn-icon btn-outline-secondary"
+                                    disabled>&laquo;
+                                    Previous
+                                    week</button>
+                            </div>
 
-                    <span class="btn btn-sm">
-                        Week of 5/6/20-5/12/20
-                    </span>
-                    <div class="col text-right">
-                        <button type="button" class="btn btn-outline-secondary btn-sm">Next week &raquo;</button>
+                            <span class="btn btn-sm">
+                                Week of 5/6/20-5/12/20
+                            </span>
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary">Next
+                                    week
+                                    &raquo;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="card mb-5  shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">My shifts</h4>
-            </div>
-            <div class="table-responsive">
-                <table class="table card-table table-hover table-vcenter text-nowrap">
-                    <thead>
-                        <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Time</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>5/7/20</button></td>
-                            <td>5-6 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
-                                        class="fas fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>5/7/20</button></td>
-                            <td>6-7 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
-                                        class="fas fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>5/10/20</button></td>
-                            <td>4-5 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
-                                        class="fas fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>5/12/20</button></td>
-                            <td>6-7 PM</td>
-                            <td><button type="button" class="btn btn-outline-danger btn-sm"><i
-                                        class="fas fa-times"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer">
-                <div class="pagination">
-                    <div class="col text-left">
-                        <!-- <button type="button btn" class="btn btn-outline-secondary btn-sm">&laquo; Previous week</button> -->
-                    </div>
 
-                    <span class="btn btn-sm">
-                        Page 1 of 1
-                    </span>
-                    <div class="col text-right">
-                        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Next week &raquo;</button> -->
+            </div>
+            <div class="col-xl-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0">My upcoming shifts</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table card-table table-hover table-vcenter text-center text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5/7/20</td>
+                                    <td>5-6 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-icon btn-outline-danger"><i
+                                                class="fe fe-trash-2"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>5/7/20</td>
+                                    <td>6-7 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-icon btn-outline-danger"><i
+                                                class="fe fe-trash-2"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>5/10/20</td>
+                                    <td>4-5 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-icon btn-outline-danger"><i
+                                                class="fe fe-trash-2"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>5/12/20</td>
+                                    <td>6-7 PM</td>
+                                    <td><button type="button" class="btn btn-sm btn-icon btn-outline-danger"><i
+                                                class="fe fe-trash-2"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pagination">
+                            <div class="col text-left">
+                                <button type="button btn" class="btn btn-sm btn-pill btn-outline-secondary"
+                                    disabled>&laquo;
+                                    Previous</button>
+                            </div>
+
+                            <span class="btn btn-sm">
+                                Page 1 of 1
+                            </span>
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-sm btn-pill btn-icon btn-outline-secondary">Next
+                                    &raquo;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
