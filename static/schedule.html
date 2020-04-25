@@ -4,60 +4,70 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <!-- Bootstrap/Tabler assets -->
 
-    <script src="./tabler/js/require.min.js"></script>
+    <script src="/tabler/js/require.min.js"></script>
     <script>
         requirejs.config({
             baseUrl: '.'
         });
     </script>
     <!-- Dashboard Core -->
-    <link href="./tabler/css/dashboard.css" rel="stylesheet" />
-    <script src="./tabler/js/dashboard.js"></script>
+    <link href="/tabler/css/dashboard.css" rel="stylesheet" />
+    <script src="/tabler/js/dashboard.js"></script>
     <!-- c3.js Charts Plugin -->
-    <link href="./tabler/plugins/charts-c3/plugin.css" rel="stylesheet" />
-    <script src="./tabler/plugins/charts-c3/plugin.js"></script>
+    <link href="/tabler/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="/tabler/plugins/charts-c3/plugin.js"></script>
     <!-- Google Maps Plugin -->
-    <link href="./tabler/plugins/maps-google/plugin.css" rel="stylesheet" />
-    <script src="./tabler/plugins/maps-google/plugin.js"></script>
+    <link href="/tabler/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="/tabler/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
-    <script src="./tabler/plugins/input-mask/plugin.js"></script>
+    <script src="/tabler/plugins/input-mask/plugin.js"></script>
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/34c9f235cc.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+
     <title>Schedule</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">UMass Student Food Pantry</a>
+            <a class="navbar-brand" href="/">UMass Student Food Pantry</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="#">Home</a>
-                    <a class="nav-item nav-link" href="#">What's in stock</a>
-                    <a class="nav-item nav-link" href="#">Contact</a>
+                    <a class="nav-item nav-link" href="/">Home</a>
+                    <a class="nav-item nav-link" href="/inventory">What's in stock</a>
+                    <a class="nav-item nav-link" href="/contact">Contact</a>
                     <div class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false">Volunteer</a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Dasboard</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="#">Inbox</a>
+                            <a class="dropdown-item" href="/dashboard">Dasboard</a>
+                            <a class="dropdown-item" href="/transaction">Manage stock</a>
+                            <a class="dropdown-item" href="/statistics">Statistics</a>
+                            <a class="dropdown-item" href="/admin">Administration</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Inventory</a>
-                            <a class="dropdown-item" href="#">Schedule</a>
+                            <a class="dropdown-item" href="/schedule">Shift registration</a>
+                            <a class="dropdown-item" href="/settings">Profile settings</a>
+                            <a class="dropdown-item" href="/inbox">Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/register">Register</a>
+                            <a class="dropdown-item" href="/training">Training</a>
+                            <a class="dropdown-item" href="/quiz">Training Quiz</a>
+                            <a class="dropdown-item" href="/login">Log in</a>
+                            <a class="dropdown-item" href="#">Log out</a>
                         </div>
                     </div>
                 </div>

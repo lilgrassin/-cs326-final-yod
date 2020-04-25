@@ -1,19 +1,16 @@
-import { DatabaseInterface } from './db-interface';
+// import { DatabaseInterface } from './db-interface';
 import express from "express";
-import * as http from "http";
-import * as url from "url";
 
 export class PRServer {
 
-	private theDatabase: DatabaseInterface;
+	// private theDatabase: DatabaseInterface;
 
 	// Server stuff: use express instead of http.createServer
 	private server = express();
-	private port = 8080;
 	private router = express.Router();
 
-	constructor(db: DatabaseInterface) {
-		this.theDatabase = db;
+	constructor(/* db: DatabaseInterface */) {
+		// this.theDatabase = db;
 		/* from https://enable-cors.org/server_expressjs.html */
 		this.router.use((request, response, next) => {
 			// FIXME: actually use the request so TS doesn't complain
@@ -25,7 +22,7 @@ export class PRServer {
 		});
 
 		/* Serve static pages from a particular path. */
-		this.server.use('/', express.static('./static'));
+		this.server.use('/', express.static('./static', { 'extensions': ['html'] }));
 
 		/* TODO: Handle CREATE, READ, UPDATE, and DELETE operations
 		handle errors with a wildcard (*) */

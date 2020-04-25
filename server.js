@@ -3,14 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import { DatabaseInterface } from './db-interface';
 const express_1 = __importDefault(require("express"));
 class PRServer {
-    constructor(db) {
+    constructor( /* db: DatabaseInterface */) {
+        // private theDatabase: DatabaseInterface;
         // Server stuff: use express instead of http.createServer
         this.server = express_1.default();
-        this.port = 8080;
         this.router = express_1.default.Router();
-        this.theDatabase = db;
+        // this.theDatabase = db;
         /* from https://enable-cors.org/server_expressjs.html */
         this.router.use((request, response, next) => {
             // FIXME: actually use the request so TS doesn't complain
@@ -21,7 +22,7 @@ class PRServer {
             next();
         });
         /* Serve static pages from a particular path. */
-        this.server.use('/', express_1.default.static('./static'));
+        this.server.use('/', express_1.default.static('./static', { 'extensions': ['html'] }));
         /* TODO: Handle CREATE, READ, UPDATE, and DELETE operations
         handle errors with a wildcard (*) */
         // this.router.get('/users/:userId/create', this.createHandler.bind(this));
