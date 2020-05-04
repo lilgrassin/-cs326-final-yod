@@ -146,12 +146,7 @@ class Database {
             try {
                 let result = yield this.db.any(query, obj);
                 console.log("get: returned " + JSON.stringify(result));
-                if (result.length) {
-                    return result;
-                }
-                else {
-                    return [];
-                }
+                return result;
             }
             catch (err) {
                 console.log(err);

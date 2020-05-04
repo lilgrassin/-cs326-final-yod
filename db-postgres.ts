@@ -177,11 +177,7 @@ export class Database implements DatabaseInterface {
 		try {
 			let result = await this.db.any(query, obj);
 			console.log("get: returned " + JSON.stringify(result));
-			if (result.length) {
-				return result;
-			} else {
-				return [];
-			}
+			return result;
 		} catch (err) {
 			console.log(err);
 			return null;
