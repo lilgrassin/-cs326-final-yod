@@ -8,15 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const url = "http://localhost:8080";
 function createMessage() {
     (() => __awaiter(this, void 0, void 0, function* () {
         let name = document.getElementById("inputName").value;
         let email = document.getElementById("inputEmail").value;
         let type = document.getElementById("inputType").value;
         let message = document.getElementById("inputMessage").value;
-        const newURL = url + "/mail/create";
+        const newURL = window.location.pathname + "/mail/create";
         const resp = yield fetch(newURL);
         const j = yield resp.json();
         if (j['result'] !== 'error') {
