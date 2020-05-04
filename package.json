@@ -24,12 +24,13 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
+    "@types/faker": "^4.1.11",
     "@types/mongodb": "^3.5.10",
     "@types/node": "^13.13.2"
   },
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^4.1.0",
-    "mongodb": "^3.5.6"
+    "pg-promise": "^10.5.2"
   }
 }
