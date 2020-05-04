@@ -3,15 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import { DatabaseInterface } from './db-interface';
 const express_1 = __importDefault(require("express"));
 class PRServer {
-    constructor( /* db: DatabaseInterface */) {
-        // private theDatabase: DatabaseInterface;
+    constructor(db) {
         // Server stuff: use express instead of http.createServer
         this.server = express_1.default();
         this.router = express_1.default.Router();
-        // this.theDatabase = db;
+        this.theDatabase = db;
         /* from https://enable-cors.org/server_expressjs.html */
         this.router.use((request, response, next) => {
             // FIXME: actually use the request so TS doesn't complain
