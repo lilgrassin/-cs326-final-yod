@@ -12,7 +12,7 @@ export type User = {
     email?: string,
     phone?: string,
     password?: string,
-    grad?: Date,
+    grad?: string,
     admin?: boolean
 };
 
@@ -29,6 +29,7 @@ export type Item = {
     donated?: number,
     distributed?: number
 };
+
 export type ItemData = {
     dataType: DataType.Item,
     data?: Item,
@@ -41,21 +42,38 @@ export type Transaction = {
     check_in?: boolean,
     weight?: number,
 };
+
 export type TransactionData = {
     dataType: DataType.Transaction,
     data?: Transaction,
     criteria?: object
 };
 
+export type Mail = {
+    created?: Date,
+    name?: string,
+    email?: string,
+    type?: string,
+    message?: string
+};
+
+export type MailData = {
+    dataType: DataType.Mail,
+    data?: Mail,
+    criteria?: object
+};
+
 export type ObjectData =
     | UserData
     | ItemData
-    | TransactionData;
+    | TransactionData
+    | MailData;
 
 export type Data =
     | User
     | Item
-    | Transaction;
+    | Transaction
+    | Mail;
 
 export interface DatabaseInterface {
 

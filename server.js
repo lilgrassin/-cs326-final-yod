@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const db_interface_1 = require("./db-interface");
 const express_1 = __importDefault(require("express"));
 class PRServer {
     constructor(db) {
@@ -32,7 +33,8 @@ class PRServer {
         this.server.use('/', express_1.default.static('./static', { 'extensions': ['html'] }));
         /* TODO: Handle CREATE, READ, UPDATE, and DELETE operations
         handle errors with a wildcard (*) */
-        this.router.get('/users/:userId/create', this.createHandler.bind(this));
+        this.router.get('/create/mail', this.createMailHandler.bind(this));
+        this.router.get('/create/user', this.createUserHandler.bind(this));
         this.router.get('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
         this.router.get('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
         this.router.get('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
@@ -54,9 +56,14 @@ class PRServer {
         });
     }
     // TODO
-    createHandler(request, response) {
+    createMailHandler(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.createUser(request.params['userId'] + "-" + request.query.name, response);
+            yield this.createMail(request.query.name, request.query.email, request.query.type, request.query.message, response);
+        });
+    }
+    createUserHandler(request, response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.createUser(request.query.name, request.query.email, request.query.type, request.query.message, response);
         });
     }
     // TODO
@@ -82,14 +89,14 @@ class PRServer {
         this.server.listen(port);
     }
     // TODO
-    createUser(name, response) {
+    createUser(first, last, email, phone, graduation, password, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            // console.log("creating counter named '" + name + "'");
-            // await this.theDatabase.put(name, 0);
-            // response.write(JSON.stringify({'result' : 'created',
-            // 			       'name' : name,
-            // 			       'value' : 0 }));
-            // response.end();
+            console.log("creating user " + first);
+            yield this.theDatabase.put({ dataType: db_interface_1.DataType.User, data: { 'fname': first, 'lname': last, 'email': email, 'phone': phone, 'password': password, 'grad': graduation, 'admin': false } });
+            response.write(JSON.stringify({ 'result': 'created',
+                'name': name,
+                'value': 0 }));
+            response.end();
         });
     }
     // TODO
@@ -176,14 +183,15 @@ class PRServer {
         });
     }
     // TODO
-    createMail(name, response) {
+    createMail(name, email, type, message, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            // console.log("creating counter named '" + name + "'");
-            // await this.theDatabase.put(name, 0);
-            // response.write(JSON.stringify({'result' : 'created',
-            // 			       'name' : name,
-            // 			       'value' : 0 }));
-            // response.end();
+            console.log("creating mail");
+            let dateTime = new Date();
+            yield this.theDatabase.put({ dataType: db_interface_1.DataType.Mail, data: { 'created': dateTime, 'name': name, 'email': email, 'type': type, 'message': message } });
+            response.write(JSON.stringify({ 'result': 'created',
+                'name': name,
+                'value': 0 }));
+            response.end();
         });
     }
     // TODO

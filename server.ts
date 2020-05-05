@@ -1,4 +1,4 @@
-import { DatabaseInterface } from './db-interface';
+import { DatabaseInterface, DataType, UserData, MailData } from './db-interface';
 import express from "express";
 
 export class PRServer {
@@ -26,7 +26,8 @@ export class PRServer {
 
 		/* TODO: Handle CREATE, READ, UPDATE, and DELETE operations
 		handle errors with a wildcard (*) */
-		this.router.get('/users/:userId/create', this.createHandler.bind(this));
+		this.router.get('/create/mail', this.createMailHandler.bind(this));
+		this.router.get('/create/user', this.createUserHandler.bind(this));
 		this.router.get('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
 		this.router.get('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
 		this.router.get('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
@@ -48,8 +49,12 @@ export class PRServer {
 	}
 
 	// TODO
-	private async createHandler(request, response) : Promise<void> {
-	await this.createUser(request.params['userId']+"-"+request.query.name, response);
+	private async createMailHandler(request: any, response: any) : Promise<void> {
+	await this.createMail(request.query.name, request.query.email, request.query.type, request.query.message, response);
+	}
+
+	private async createUserHandler(request: any, response: any) : Promise<void> {
+	await this.createUser(request.query.name, request.query.email, request.query.type, request.query.message, response);
 	}
 
 	// TODO
@@ -73,13 +78,13 @@ export class PRServer {
 	}
 
 	// TODO
-	public async createUser(name: string, response) : Promise<void> {
-	// console.log("creating counter named '" + name + "'");
-	// await this.theDatabase.put(name, 0);
-	// response.write(JSON.stringify({'result' : 'created',
-	// 			       'name' : name,
-	// 			       'value' : 0 }));
-	// response.end();
+	public async createUser(first: string, last: string, email: string, phone: string, graduation: string, password:string, response: any) : Promise<void> {
+		console.log("creating user " + first);
+		await this.theDatabase.put({dataType: DataType.User, data:{'fname': first, 'lname': last, 'email': email, 'phone': phone, 'password':password, 'grad':graduation, 'admin':false}} as UserData);
+		response.write(JSON.stringify({'result' : 'created',
+						'name' : name,
+						'value' : 0 }));
+		response.end();
 	}
 
 	// TODO
@@ -155,14 +160,16 @@ export class PRServer {
 	// 			       'value'  : name }));
 	// response.end();
 	}
+
 	// TODO
-	public async createMail(name: string, response) : Promise<void> {
-	// console.log("creating counter named '" + name + "'");
-	// await this.theDatabase.put(name, 0);
-	// response.write(JSON.stringify({'result' : 'created',
-	// 			       'name' : name,
-	// 			       'value' : 0 }));
-	// response.end();
+	public async createMail(name: string, email: string, type: string, message: string, response: any) : Promise<void> {
+		console.log("creating mail");
+		let dateTime = new Date()
+		await this.theDatabase.put({dataType: DataType.Mail, data:{'created': dateTime, 'name':name, 'email':email, 'type': type, 'message': message}} as MailData);
+		response.write(JSON.stringify({'result' : 'created',
+						'name' : name,
+						'value' : 0 }));
+		response.end();
 	}
 
 	// TODO
