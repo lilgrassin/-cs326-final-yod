@@ -41,7 +41,7 @@ class Database {
          */
         ((self) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const createTableSQL = (cols) => { return `CREATE TABLE $(table~) (${cols})`; };
+                const createTableSQL = (cols) => { return `CREATE TABLE $(table:name) (${cols})`; };
                 /***** Data Tables *****/
                 console.log("creating users");
                 // Users
@@ -72,7 +72,7 @@ class Database {
                 // Statistics/Transactions
                 console.log("creating stats");
                 yield self.db.none(createTableSQL(`id SERIAL PRIMARY KEY,
-						user_id SERIAL REFERENCES $(userRef~) NOT NULL,
+						user_id SERIAL REFERENCES $(userRef:name) NOT NULL,
 						created TIMESTAMP NOT NULL,
 						check_in BOOLEAN NOT NULL,
 						weight INTEGER NOT NULL`), {
@@ -83,8 +83,8 @@ class Database {
                 console.log("creating shifts");
                 yield self.db.none(createTableSQL(`id SERIAL PRIMARY KEY,
 						shift TIMESTAMP UNIQUE NOT NULL,
-						user1_id SERIAL REFERENCES $(userRef~),
-						user2_id SERIAL REFERENCES $(userRef~),
+						user1_id SERIAL REFERENCES $(userRef:name),
+						user2_id SERIAL REFERENCES $(userRef:name),
 						CHECK (user1_id IS DISTINCT FROM user2_id)`), {
                     table: db_interface_1.DataType.Shift,
                     userRef: db_interface_1.DataType.User
@@ -92,8 +92,8 @@ class Database {
                 /***** Relational Tables *****/
                 // Mail <-> Users (Owner, Sender, Recipient)
                 console.log("creating mail-users");
-                yield self.db.none(createTableSQL(`user_id SERIAL REFERENCES $(userRef~),
-						message_id SERIAL REFERENCES $(mailRef~),
+                yield self.db.none(createTableSQL(`user_id SERIAL REFERENCES $(userRef:name),
+						message_id SERIAL REFERENCES $(mailRef:name),
 						is_owner BOOLEAN NOT NULL,
 						is_sender BOOLEAN NOT NULL,
 						is_recipient BOOLEAN NOT NULL,
@@ -105,11 +105,11 @@ class Database {
                 });
                 // Constrain each message to a unique sender
                 console.log("creating mail-users index");
-                yield self.db.none("CREATE UNIQUE INDEX single_message_sender ON $(table~) (message_id) WHERE (is_sender)", { table: self.userMailTable });
+                yield self.db.none("CREATE UNIQUE INDEX single_message_sender ON $(table:name) (message_id) WHERE (is_sender)", { table: self.userMailTable });
                 // Items <-> Statistics/Transactions
                 console.log("creating items-stats");
-                yield self.db.none(createTableSQL(`item_id SERIAL REFERENCES $(itemRef~),
-						stat_id SERIAL REFERENCES $(statRef~),
+                yield self.db.none(createTableSQL(`item_id SERIAL REFERENCES $(itemRef:name),
+						stat_id SERIAL REFERENCES $(statRef:name),
 						item_count INTEGER NOT NULL,
 						PRIMARY KEY (item_id, stat_id)`), {
                     table: self.itemStatTable,
@@ -127,8 +127,8 @@ class Database {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("put: type = " + obj.dataType + ", object = " + obj);
             const query = obj.criteria
-                ? "UPDATE ${dataType~} SET (${data~}) = (${data:csv}) WHERE (${criteria~}) = (${critera:csv})"
-                : "INSERT INTO ${dataType~}(${data~}) VALUES(${data:csv})";
+                ? "UPDATE ${dataType:name} SET (${data:name}) = (${data:csv}) WHERE (${criteria:name}) = (${critera:csv})"
+                : "INSERT INTO ${dataType:name}(${data:name}) VALUES(${data:csv})";
             try {
                 yield this.db.none(query, obj);
                 return true;
@@ -142,7 +142,7 @@ class Database {
     get(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("get: type = " + obj.dataType + ", object = " + obj);
-            const query = "SELECT * FROM ${dataType~} WHERE (${criteria~}) = (${critera:csv})";
+            const query = "SELECT * FROM ${dataType:name} WHERE (${criteria:name}) = (${critera:csv})";
             try {
                 let result = yield this.db.any(query, obj);
                 console.log("get: returned " + JSON.stringify(result));
@@ -154,6 +154,8 @@ class Database {
             }
         });
     }
+    // TODO
+    // @ts-ignore
     aggregate(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             return null;
@@ -162,7 +164,7 @@ class Database {
     del(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("del: type = " + obj.dataType + ", object = " + obj);
-            const query = "DELETE FROM ${dataType~} WHERE (${criteria~}) = (${critera:csv})";
+            const query = "DELETE FROM ${dataType:name} WHERE (${criteria:name}) = (${critera:csv})";
             try {
                 yield this.db.none(query, obj);
                 return true;
