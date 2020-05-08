@@ -88,11 +88,13 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" id="chk-in-tab" href="#in" onclick="tabHandler(event);return false;"><i class="fe fe-download"></i> Check
+                                <a class="nav-link active" id="chk-in-tab" href="#in"
+                                    onclick="tabHandler(event);return false;"><i class="fe fe-download"></i> Check
                                     in</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="chk-out-tab" href="#out" onclick="tabHandler(event);return false;"><i class="fe fe-upload"></i> Check out</a>
+                                <a class="nav-link" id="chk-out-tab" href="#out"
+                                    onclick="tabHandler(event);return false;"><i class="fe fe-upload"></i> Check out</a>
                             </li>
                         </ul>
                     </div>
@@ -108,9 +110,10 @@
 
 
                             <label class="sr-only" for="inputNumber">Number of Items</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inputNumber" placeholder="#">
+                            <input type="number" class="form-control mb-2 mr-sm-2" id="inputNumber" placeholder="#">
 
-                            <button type="submit" class="btn btn-cyan btn-indigo mb-2" id="btn-add-item"><i class="fe fe-plus"></i> Add item</button>
+                            <button type="button" class="btn btn-cyan btn-indigo mb-2" id="btn-add-item"
+                                onclick="addItemHandler()"><i class="fe fe-plus"></i> Add item</button>
 
                         </form>
                     </div>
@@ -119,17 +122,20 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        <h3 class="card-title">Transaction Items</h4>
+                        <h3 class="card-title">Transaction Items</h3>
                         <div class="card-options">
-                            <button type="button btn" class="btn btn-outline-info btn-sm btn-icon mr-2"><i
+                            <button type="button" class="btn btn-outline-info btn-sm btn-icon mr-2"><i
                                     class="fe fe-edit-3"></i></button>
-                            <button type="button btn" class="btn btn-outline-danger btn-sm btn-icon mr-2"><i
+                            <button type="button" class="btn btn-outline-danger btn-sm btn-icon mr-2"><i
                                     class="fe fe-trash-2"></i></button>
-                            <button type="button btn" class="btn btn-success btn-sm" id="submit-items"><i class="fe fe-check-circle"></i> Check in items</button>
+                            <button type="button" class="btn btn-success btn-sm" id="submit-items" data-toggle="modal"
+                            data-target="#weight-modal"><i
+                                    class="fe fe-check-circle"></i> Check in items</button>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table card-table table-hover table-vcenter text-nowrap select-indigo select-cyan" id="select-table">
+                        <table class="table card-table table-hover table-vcenter text-nowrap select-indigo select-cyan"
+                            id="select-table">
                             <thead>
                                 <tr>
                                     <th scope="col">Item</th>
@@ -137,8 +143,8 @@
                                     <th scope="col">Number</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr onclick="selectionHandler(event)">
+                            <tbody id="select-table-body">
+                                <!-- <tr onclick="selectionHandler(event)">
                                     <td>Spaghetti</button></td>
                                     <td>Pasta & Grains</td>
                                     <td>3</td>
@@ -157,14 +163,14 @@
                                     <td>Cream of Mushroom</button></td>
                                     <td>Soup</td>
                                     <td>4</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
                     <div class="card-footer">
                         <div class="pagination">
                             <div class="col text-left">
-                                <button type="button btn" class="btn btn-sm btn-pill btn-outline-secondary"
+                                <button type="button" class="btn btn-sm btn-pill btn-outline-secondary"
                                     disabled>&laquo;
                                     Previous</button>
                             </div>
@@ -185,24 +191,38 @@
     </article>
 
     <!-- Modals -->
-    <div class="modal fade" id="permissionsModal" tabindex="-1" role="dialog" aria-labelledby="permissionsModalLabel"
+    <div class="modal fade" id="weight-modal" tabindex="-1" role="dialog" aria-labelledby="weight-modal-label"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            <form class="modal-content" onsubmit="submitTransactionHandler(event)" id="weight-form">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="permissionsModalLabel">Modify user permissions</h5>
+                    <h5 class="modal-title" id="weight-modal-label">Complete check in</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to modify this user's permissions?
+                    <div class="alert alert-success" role="alert" id="alert-success" hidden>
+                        Success!
+                      </div>
+                    <div class="alert alert-success" role="alert" id="alert-error" hidden>
+                        Error!
+                      </div>
+                    <div class="form-group">
+                        <label class="form-label" id="weight-form-label">Total weight of donated items</label>
+                        <div class="input-group">
+                          <input type="number" name="weight" min="0" class="form-control" placeholder="Total weight" aria-label="Total weight of items" aria-describedby="basic-addon2" required>
+                          <span class="input-group-append" id="basic-addon2">
+                            <span class="input-group-text">kgs</span>
+                          </span>
+                        </div>
+                      </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Modify user</button>
+                    <button type="submit" class="btn btn-success" id="submit-items-modal"><i class='fe fe-check-circle'></i> Check in items</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"

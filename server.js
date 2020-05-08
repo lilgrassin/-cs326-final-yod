@@ -14,74 +14,109 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_interface_1 = require("./db-interface");
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 class PRServer {
     constructor(db) {
         // Server stuff: use express instead of http.createServer
         this.server = express_1.default();
-        this.router = express_1.default.Router();
         this.theDatabase = db;
         /* from https://enable-cors.org/server_expressjs.html */
-        this.router.use((request, response, next) => {
-            // FIXME: actually use the request so TS doesn't complain
-            console.log(request);
-            response.header('Content-Type', 'application/json');
-            response.header('Access-Control-Allow-Origin', '*');
-            response.header('Access-Control-Allow-Headers', '*');
-            next();
-        });
+        this.server.use(cors_1.default());
+        this.server.use(express_1.default.json());
         /* Serve static pages from a particular path. */
         this.server.use('/', express_1.default.static('./static', { 'extensions': ['html'] }));
         /* TODO: Handle CREATE, READ, UPDATE, and DELETE operations
         handle errors with a wildcard (*) */
-        this.router.get('/create/mail', this.createMailHandler.bind(this));
-        this.router.get('/create/user', this.createUserHandler.bind(this));
-        this.router.get('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
-        this.router.get('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
-        this.router.get('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
-        this.router.get('*', (request, response) => __awaiter(this, void 0, void 0, function* () {
-            response.send(JSON.stringify({ "result": "command-not-found" }));
+        this.server.post('/create/mail', this.createMailHandler.bind(this));
+        this.server.post('/create/user', this.createUserHandler.bind(this));
+        this.server.post('/create/item', this.createItemHandler.bind(this));
+        this.server.post('*', (_req, res) => __awaiter(this, void 0, void 0, function* () {
+            res.send(JSON.stringify({ "result": "command-not-found" }));
         }));
-        this.server.use('/counter', this.router);
     }
     // TODO
-    errorHandler(request, response, next) {
+    // @ts-ignore
+    errorHandler(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            // let value : boolean = await this.theDatabase.isFound(request.params['userId']+"-"+request.query.name);
+            // let value : boolean = await this.theDatabase.isFound(req.params['userId']+"-"+req.query.name);
             // if (!value) {
-            //     response.write(JSON.stringify({'result' : 'error'}));
-            //     response.end();
+            //     res.write(JSON.stringify({'result' : 'error'}));
+            //     res.end();
             // } else {
             next();
             // }
         });
     }
-    // TODO
-    createMailHandler(request, response) {
+    // FIXME
+    createMailHandler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.createMail(request.query.name, request.query.email, request.query.type, request.query.message, response);
+            yield this.createMail(req.body.name, req.body.email, req.body.type, req.body.message, res);
         });
     }
-    createUserHandler(request, response) {
+    // FIXME
+    createUserHandler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.createUser(request.query.name, request.query.email, request.query.type, request.query.message, response);
+            yield this.createUser(req.body.fname, req.body.lname, req.body.email, req.body.phone, req.body.grad, req.body.pass, res);
+        });
+    }
+    createItemHandler(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("recieved:\n" + JSON.stringify(req.body));
+            let trans = {
+                dataType: db_interface_1.DataType.Transaction,
+                data: {
+                    created: new Date(),
+                    user_id: null,
+                    check_in: req.body.check_in,
+                    weight: req.body.weight
+                }
+            };
+            if (!(yield this.theDatabase.put(trans))) {
+                console.log("error inserting transaction");
+                res.write(JSON.stringify({
+                    'result': 'error',
+                }));
+            }
+            else {
+                res.write(JSON.stringify({
+                    'result': 'created'
+                }));
+            }
+            res.end();
+            // let item : ItemData = {
+            // 	dataType: DataType.Item,
+            // 	data: {
+            // 	}
+            // }
+            // res.
+            // for (let i of req.body.items) {
+            // 	item.data = {
+            // 		name: i.name,
+            // 		c
+            // 	}
+            // 	if (!await this.theDatabase.put(item))
+            // }
         });
     }
     // TODO
-    readHandler(request, response) {
+    // @ts-ignore
+    readHandler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.readUser(request.params['email'] + "-" + request.query.name, response);
+            yield this.readUser(req.params['email'] + "-" + req.query.name, res);
         });
     }
     // TODO
-    updateHandler(request, response) {
+    // @ts-ignore
+    updateHandler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.updateUser(request.params['email'] + "-" + request.query.name, request.query.value, response);
+            yield this.updateUser(req.params['email'] + "-" + req.query.name, req.body.value, res);
         });
     }
     // TODO
-    deleteHandler(request, response) {
+    // @ts-ignore
+    deleteHandler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.deleteUser(request.params['email'] + "-" + request.query.name, response);
+            yield this.deleteUser(req.params['email'] + "-" + req.query.name, res);
         });
     }
     // FIXME: check this?
@@ -89,286 +124,318 @@ class PRServer {
         this.server.listen(port);
     }
     // TODO
-    createUser(first, last, email, phone, graduation, password, response) {
+    createUser(first, last, email, phone, graduation, password, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("creating user " + first);
             yield this.theDatabase.put({ dataType: db_interface_1.DataType.User, data: { 'fname': first, 'lname': last, 'email': email, 'phone': phone, 'password': password, 'grad': graduation, 'admin': false } });
-            response.write(JSON.stringify({ 'result': 'created',
+            res.write(JSON.stringify({
+                'result': 'created',
                 'name': name,
-                'value': 0 }));
-            response.end();
+                'value': 0
+            }));
+            res.end();
         });
     }
     // TODO
-    errorUser(name, response) {
+    // @ts-ignore
+    errorUser(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // response.write(JSON.stringify({'result': 'error'}));
-            // response.end();
+            // res.write(JSON.stringify({'result': 'error'}));
+            // res.end();
         });
     }
     // TODO
-    readUser(name, response) {
+    // @ts-ignore
+    readUser(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // let value = await this.theDatabase.get(name);
-            // response.write(JSON.stringify({'result' : 'read',
+            // res.write(JSON.stringify({'result' : 'read',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    updateUser(name, value, response) {
+    // @ts-ignore
+    updateUser(name, value, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.put(name, value);
-            // response.write(JSON.stringify({'result' : 'updated',
+            // res.write(JSON.stringify({'result' : 'updated',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    deleteUser(name, response) {
+    // @ts-ignore
+    deleteUser(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.del(name);
-            // response.write(JSON.stringify({'result' : 'deleted',
+            // res.write(JSON.stringify({'result' : 'deleted',
             // 			       'value'  : name }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    createItem(name, response) {
+    // @ts-ignore
+    createItem(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log("creating counter named '" + name + "'");
             // await this.theDatabase.put(name, 0);
-            // response.write(JSON.stringify({'result' : 'created',
+            // res.write(JSON.stringify({'result' : 'created',
             // 			       'name' : name,
             // 			       'value' : 0 }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    errorItem(name, response) {
+    // @ts-ignore
+    errorItem(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // response.write(JSON.stringify({'result': 'error'}));
-            // response.end();
+            // res.write(JSON.stringify({'result': 'error'}));
+            // res.end();
         });
     }
     // TODO
-    readItem(name, response) {
+    // @ts-ignore
+    readItem(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // let value = await this.theDatabase.get(name);
-            // response.write(JSON.stringify({'result' : 'read',
+            // res.write(JSON.stringify({'result' : 'read',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    updateItem(name, value, response) {
+    // @ts-ignore
+    updateItem(name, value, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.put(name, value);
-            // response.write(JSON.stringify({'result' : 'updated',
+            // res.write(JSON.stringify({'result' : 'updated',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    deleteItem(name, response) {
+    // @ts-ignore
+    deleteItem(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.del(name);
-            // response.write(JSON.stringify({'result' : 'deleted',
+            // res.write(JSON.stringify({'result' : 'deleted',
             // 			       'value'  : name }));
-            // response.end();
+            // res.end();
         });
     }
-    // TODO
-    createMail(name, email, type, message, response) {
+    // FIXME: wrong database API
+    createMail(name, email, type, message, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("creating mail");
             let dateTime = new Date();
             yield this.theDatabase.put({ dataType: db_interface_1.DataType.Mail, data: { 'created': dateTime, 'name': name, 'email': email, 'type': type, 'message': message } });
-            response.write(JSON.stringify({ 'result': 'created',
+            res.write(JSON.stringify({
+                'result': 'created',
                 'name': name,
-                'value': 0 }));
-            response.end();
+                'value': 0
+            }));
+            res.end();
         });
     }
     // TODO
-    errorMail(name, response) {
+    // @ts-ignore
+    errorMail(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // response.write(JSON.stringify({'result': 'error'}));
-            // response.end();
+            // res.write(JSON.stringify({'result': 'error'}));
+            // res.end();
         });
     }
     // TODO
-    readMail(name, response) {
+    // @ts-ignore
+    readMail(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // let value = await this.theDatabase.get(name);
-            // response.write(JSON.stringify({'result' : 'read',
+            // res.write(JSON.stringify({'result' : 'read',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    updateMail(name, value, response) {
+    // @ts-ignore
+    updateMail(name, value, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.put(name, value);
-            // response.write(JSON.stringify({'result' : 'updated',
+            // res.write(JSON.stringify({'result' : 'updated',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    deleteMail(name, response) {
+    // @ts-ignore
+    deleteMail(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.del(name);
-            // response.write(JSON.stringify({'result' : 'deleted',
+            // res.write(JSON.stringify({'result' : 'deleted',
             // 			       'value'  : name }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    createTransaction(name, response) {
+    // @ts-ignore
+    createTransaction(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log("creating counter named '" + name + "'");
             // await this.theDatabase.put(name, 0);
-            // response.write(JSON.stringify({'result' : 'created',
+            // res.write(JSON.stringify({'result' : 'created',
             // 			       'name' : name,
             // 			       'value' : 0 }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    errorTransaction(name, response) {
+    // @ts-ignore
+    errorTransaction(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // response.write(JSON.stringify({'result': 'error'}));
-            // response.end();
+            // res.write(JSON.stringify({'result': 'error'}));
+            // res.end();
         });
     }
     // TODO
-    readTransaction(name, response) {
+    // @ts-ignore
+    readTransaction(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // let value = await this.theDatabase.get(name);
-            // response.write(JSON.stringify({'result' : 'read',
+            // res.write(JSON.stringify({'result' : 'read',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    updateTransaction(name, value, response) {
+    // @ts-ignore
+    updateTransaction(name, value, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.put(name, value);
-            // response.write(JSON.stringify({'result' : 'updated',
+            // res.write(JSON.stringify({'result' : 'updated',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    deleteTransaction(name, response) {
+    // @ts-ignore
+    deleteTransaction(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.del(name);
-            // response.write(JSON.stringify({'result' : 'deleted',
+            // res.write(JSON.stringify({'result' : 'deleted',
             // 			       'value'  : name }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    createSchedule(name, response) {
+    // @ts-ignore
+    createSchedule(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log("creating counter named '" + name + "'");
             // await this.theDatabase.put(name, 0);
-            // response.write(JSON.stringify({'result' : 'created',
+            // res.write(JSON.stringify({'result' : 'created',
             // 			       'name' : name,
             // 			       'value' : 0 }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    errorSchedule(name, response) {
+    // @ts-ignore
+    errorSchedule(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // response.write(JSON.stringify({'result': 'error'}));
-            // response.end();
+            // res.write(JSON.stringify({'result': 'error'}));
+            // res.end();
         });
     }
     // TODO
-    readSchedule(name, response) {
+    // @ts-ignore
+    readSchedule(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // let value = await this.theDatabase.get(name);
-            // response.write(JSON.stringify({'result' : 'read',
+            // res.write(JSON.stringify({'result' : 'read',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    updateSchedule(name, value, response) {
+    // @ts-ignore
+    updateSchedule(name, value, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.put(name, value);
-            // response.write(JSON.stringify({'result' : 'updated',
+            // res.write(JSON.stringify({'result' : 'updated',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    deleteSchedule(name, response) {
+    // @ts-ignore
+    deleteSchedule(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.del(name);
-            // response.write(JSON.stringify({'result' : 'deleted',
+            // res.write(JSON.stringify({'result' : 'deleted',
             // 			       'value'  : name }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    createShift(name, response) {
+    // @ts-ignore
+    createShift(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log("creating counter named '" + name + "'");
             // await this.theDatabase.put(name, 0);
-            // response.write(JSON.stringify({'result' : 'created',
+            // res.write(JSON.stringify({'result' : 'created',
             // 			       'name' : name,
             // 			       'value' : 0 }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    errorShift(name, response) {
+    // @ts-ignore
+    errorShift(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // response.write(JSON.stringify({'result': 'error'}));
-            // response.end();
+            // res.write(JSON.stringify({'result': 'error'}));
+            // res.end();
         });
     }
     // TODO
-    readShift(name, response) {
+    // @ts-ignore
+    readShift(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // let value = await this.theDatabase.get(name);
-            // response.write(JSON.stringify({'result' : 'read',
+            // res.write(JSON.stringify({'result' : 'read',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    updateShift(name, value, response) {
+    // @ts-ignore
+    updateShift(name, value, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.put(name, value);
-            // response.write(JSON.stringify({'result' : 'updated',
+            // res.write(JSON.stringify({'result' : 'updated',
             // 			       'name' : name,
             // 			       'value' : value }));
-            // response.end();
+            // res.end();
         });
     }
     // TODO
-    deleteShift(name, response) {
+    // @ts-ignore
+    deleteShift(name, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // await this.theDatabase.del(name);
-            // response.write(JSON.stringify({'result' : 'deleted',
+            // res.write(JSON.stringify({'result' : 'deleted',
             // 			       'value'  : name }));
-            // response.end();
+            // res.end();
         });
     }
 }

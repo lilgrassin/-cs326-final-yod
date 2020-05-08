@@ -35,7 +35,7 @@ export class Database implements DatabaseInterface {
 		 */
 		(async (self) => {
 			try {
-				const createTableSQL = (cols: string) => { return `CREATE TABLE $(table~) (${cols})`; };
+				const createTableSQL = (cols: string) => { return `CREATE TABLE $(table:name) (${cols})`; };
 				/***** Data Tables *****/
 				console.log("creating users");
 				// Users
@@ -83,7 +83,7 @@ export class Database implements DatabaseInterface {
 				await self.db.none(
 					createTableSQL(
 						`id SERIAL PRIMARY KEY,
-						user_id SERIAL REFERENCES $(userRef~) NOT NULL,
+						user_id SERIAL REFERENCES $(userRef:name) NOT NULL,
 						created TIMESTAMP NOT NULL,
 						check_in BOOLEAN NOT NULL,
 						weight INTEGER NOT NULL`
@@ -99,8 +99,8 @@ export class Database implements DatabaseInterface {
 					createTableSQL(
 						`id SERIAL PRIMARY KEY,
 						shift TIMESTAMP UNIQUE NOT NULL,
-						user1_id SERIAL REFERENCES $(userRef~),
-						user2_id SERIAL REFERENCES $(userRef~),
+						user1_id SERIAL REFERENCES $(userRef:name),
+						user2_id SERIAL REFERENCES $(userRef:name),
 						CHECK (user1_id IS DISTINCT FROM user2_id)`
 					),
 					{
@@ -114,8 +114,8 @@ export class Database implements DatabaseInterface {
 				console.log("creating mail-users");
 				await self.db.none(
 					createTableSQL(
-						`user_id SERIAL REFERENCES $(userRef~),
-						message_id SERIAL REFERENCES $(mailRef~),
+						`user_id SERIAL REFERENCES $(userRef:name),
+						message_id SERIAL REFERENCES $(mailRef:name),
 						is_owner BOOLEAN NOT NULL,
 						is_sender BOOLEAN NOT NULL,
 						is_recipient BOOLEAN NOT NULL,
@@ -131,15 +131,15 @@ export class Database implements DatabaseInterface {
 				// Constrain each message to a unique sender
 				console.log("creating mail-users index");
 				await self.db.none(
-					"CREATE UNIQUE INDEX single_message_sender ON $(table~) (message_id) WHERE (is_sender)",
+					"CREATE UNIQUE INDEX single_message_sender ON $(table:name) (message_id) WHERE (is_sender)",
 					{ table: self.userMailTable }
 				);
 				// Items <-> Statistics/Transactions
 				console.log("creating items-stats");
 				await self.db.none(
 					createTableSQL(
-						`item_id SERIAL REFERENCES $(itemRef~),
-						stat_id SERIAL REFERENCES $(statRef~),
+						`item_id SERIAL REFERENCES $(itemRef:name),
+						stat_id SERIAL REFERENCES $(statRef:name),
 						item_count INTEGER NOT NULL,
 						PRIMARY KEY (item_id, stat_id)`
 					),
@@ -160,8 +160,8 @@ export class Database implements DatabaseInterface {
 	public async put(obj: ObjectData): Promise<boolean> {
 		console.log("put: type = " + obj.dataType + ", object = " + obj);
 		const query = obj.criteria
-			? "UPDATE ${dataType~} SET (${data~}) = (${data:csv}) WHERE (${criteria~}) = (${critera:csv})"
-			: "INSERT INTO ${dataType~}(${data~}) VALUES(${data:csv})";
+			? "UPDATE ${dataType:name} SET (${data:name}) = (${data:csv}) WHERE (${criteria:name}) = (${critera:csv})"
+			: "INSERT INTO ${dataType:name}(${data:name}) VALUES(${data:csv})";
 		try {
 			await this.db.none(query, obj);
 			return true;
@@ -173,7 +173,7 @@ export class Database implements DatabaseInterface {
 
 	public async get(obj: ObjectData): Promise<object[] | null> {
 		console.log("get: type = " + obj.dataType + ", object = " + obj);
-		const query = "SELECT * FROM ${dataType~} WHERE (${criteria~}) = (${critera:csv})";
+		const query = "SELECT * FROM ${dataType:name} WHERE (${criteria:name}) = (${critera:csv})";
 		try {
 			let result = await this.db.any(query, obj);
 			console.log("get: returned " + JSON.stringify(result));
@@ -184,13 +184,15 @@ export class Database implements DatabaseInterface {
 		}
 	}
 
+	// TODO
+	// @ts-ignore
 	public async aggregate(obj: ObjectData): Promise<object[] | null> {
 		return null;
 	}
 
 	public async del(obj: ObjectData): Promise<boolean> {
 		console.log("del: type = " + obj.dataType + ", object = " + obj);
-		const query = "DELETE FROM ${dataType~} WHERE (${criteria~}) = (${critera:csv})";
+		const query = "DELETE FROM ${dataType:name} WHERE (${criteria:name}) = (${critera:csv})";
 		try {
 			await this.db.none(query, obj);
 			return true;

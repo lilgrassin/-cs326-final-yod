@@ -38,7 +38,7 @@ export type ItemData = {
 
 export type Transaction = {
     created?: Date,
-    user_id?: User,
+    user_id?: User | null,
     check_in?: boolean,
     weight?: number,
 };
