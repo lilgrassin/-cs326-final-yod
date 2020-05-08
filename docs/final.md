@@ -1,4 +1,5 @@
-# PantryRaider
+# Team Yod
+## Pantry Raider
 #### Spring 2020
 ### Team Yod
 - Paulaine Goldsmith ([pkg250](http://github.com/pkg250))
@@ -145,7 +146,9 @@ The application provides the public with crucial information about the food pant
 
 ## Conclusion
 
-Our team learned a lot from implementing this project, but struggled to complete all of the requirements for it. Coming into the project, we were very ambitious in our vision for what we hoped to accomplish. There were many complex features that we wanted to implement, and several different types of data we would need to handle to do so. However, we found it difficult to implement all these complexities without the tools that would have normally been available to us. We struggled to handle the many pages, functions, and data types within the restrictions and time constraints of the assignment.
+Our team learned a lot from implementing Pantry Raider over the past few weeks. One of the biggest takeaways we got from this project was learning to develop without the aid of frameworks and tools. Having to write these aspects ourselves was very interesting to do (though a bit frustrating as well).
+
+We ran into a few difficulties when working on this project that ultimately led to not completing the full implementation. Coming into the project, we were very ambitious in our vision for what we hoped to accomplish. There were many complex features that we wanted to implement, and several different types of data we would need to handle to do so. However, we found it difficult to implement all these complexities without the tools that would have normally been available to us. We struggled to handle the many pages, functions, and data types within the restrictions and time constraints of the assignment.
 
 The other major difficulty we encountered with this project was being a group of two instead of three. It was difficult to meet all the deadlines with only two-thirds of a full team. This combined with the requirement to implement many things by hand instead of using available tools lead to a huge amount of work placed on us to get the site functioning. Because of these factors, we were not able to fully complete all of the functionality of our site.
 
