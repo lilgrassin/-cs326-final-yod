@@ -20,7 +20,7 @@ The application provides the public with crucial information about the food pant
 | Home | ![](ui_final/home.png) | The landing page of the site that provides information about the pantry and how to donate or volunteer. |
 | Inventory  | ![](ui_final/inventory.png)  | Allows site visitrs to view the current pantry inventory and serach for a specific item or category of item. |
 | Contact  | ![](ui_final/contact.png)  | Allows site visitors to contact the pantry staff with a question, feedback, or item request. |
-| Register  | ![](ui_final/register.png)  | Allows a site visitor to register as a new volunteer. |
+| Register  | ![](ui_final/registration.png)  | Allows a site visitor to register as a new volunteer. |
 | Training  | ![](ui_final/training.png)  | Provides information about volunteering during the registration process. |
 | Training Quiz  | ![](ui_final/training.png)  | A quiz on pantry training information for new volunteers during the registration process. |
 | Log In  | ![](ui_final/login.png)  | Allows registered users to log in to the volunteer system. |
